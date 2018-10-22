@@ -7,7 +7,7 @@ using Library.Models;
 
 namespace Library.Repositories
 {
-    class MemberRepository
+    class MemberRepository: IRepository<Member, int>
     {
         LibraryContext context;
 
@@ -19,6 +19,21 @@ namespace Library.Repositories
         public IEnumerable<Member> All()
         {
             return context.Members;
+        }
+
+        public void Add(Member item)
+        {
+            context.Members.Add(item);
+        }
+
+        public void Remove(Member item)
+        {
+            context.Members.Add(item);
+        }
+
+        public Member Find(int id)
+        {
+            return context.Members.Find(id); 
         }
 
         public void Edit(Member m)

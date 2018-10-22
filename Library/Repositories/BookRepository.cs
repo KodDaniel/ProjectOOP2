@@ -6,7 +6,7 @@ using Library.Models;
 
 namespace Library.Repositories
 {
-    public class BookRepository
+    public class BookRepository: IRepository<Book, int>
     {
         LibraryContext context;
 
@@ -18,6 +18,21 @@ namespace Library.Repositories
         public IEnumerable<Book> All()
         {
             return context.Books;
+        }
+
+        public void Add(Book item)
+        {
+            context.Books.Add(item);
+        }
+
+        public void Remove(Book item)
+        {
+            context.Books.Remove(item);
+        }
+
+        public Book Find(int id)
+        {
+            return context.Books.Find(id);
         }
 
         public void Edit(Book b)

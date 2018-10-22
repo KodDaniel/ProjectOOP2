@@ -7,7 +7,7 @@ using Library.Models;
 
 namespace Library.Repositories
 {
-    class LoanRepository
+    class LoanRepository:IRepository<Loan, int>
     {
 
         LibraryContext context;
@@ -20,6 +20,21 @@ namespace Library.Repositories
         public IEnumerable<Loan> All()
         {
             return context.Loan;
+        }
+
+        public void Add(Loan item)
+        {
+            context.Loan.Add(item);
+        }
+
+        public void Remove(Loan item)
+        {
+            context.Loan.Remove(item);
+        }
+
+        public Loan Find(int id)
+        {
+            return context.Loan.Find(id);
         }
 
         public void Edit(Loan l)
