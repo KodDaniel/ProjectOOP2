@@ -25,10 +25,8 @@ namespace Library
         public LibraryForm()
         {
             InitializeComponent();
-
-            LibraryContext context = new LibraryContext();
-
-            RepositoryFactory repoFactory = new RepositoryFactory(context);
+     
+            RepositoryFactory repoFactory = new RepositoryFactory(ContextSingelton.GetContext());
 
             _bookService = new BookService(repoFactory);
             _authorService = new AuthorService(repoFactory);
@@ -100,7 +98,23 @@ namespace Library
 
         private void tabPage1_Click_1(object sender, EventArgs e)
         {
+            
+        }
 
+        private void ListAllBooks_listBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ListAllBooks_Btn_Click(object sender, EventArgs e)
+        {
+            var allBooks = _bookService.All();
+
+            foreach (var book in allBooks)
+            {
+                ListAllBooks_listBox.Items.Add(book.Title);
+                ListAllBooks_listBox.Items.Add("------------------------------");
+            }
         }
     }
 }
