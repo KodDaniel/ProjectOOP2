@@ -15,31 +15,42 @@ namespace Library
 {
     public partial class LibraryForm : Form
     {
+        BookService _bookService;
+        AuthorService _authorService;
+        BookCopyService _bookCopyService;
+        MemberService _memberService;
+        LoanService _loanService;
 
-        BookService bookService;
 
         public LibraryForm()
         {
             InitializeComponent();
 
-            // we create only one context in our application, which gets shared among repositories
             LibraryContext context = new LibraryContext();
-            // we use a factory object that will create the repositories as they are needed, it also makes
-            // sure all the repositories created use the same context.
-            RepositoryFactory repFactory = new RepositoryFactory(context);
+            RepositoryFactory repoFactory = new RepositoryFactory(context);
 
-            this.bookService = new BookService(repFactory);
+            _bookService = new BookService(repoFactory);
+            _authorService = new AuthorService(repoFactory);
+            _bookCopyService = new BookCopyService(repoFactory);
+            _memberService = new MemberService(repoFactory);
+            _loanService = new LoanService(repoFactory);
 
-            ShowAllBooks(bookService.All());
         }
         
 
-        private void ShowAllBooks(IEnumerable<Book> books)
+        private  IEnumerable<Book> ListAllBooks()
         {
-            lbBooks.Items.Clear();
-            foreach (Book book in books)
+            return _bookService.All();
+        }
+
+        private void ListAllBooks_Btn_Click(object sender, EventArgs e)
+        {
+            var allBooks = ListAllBooks();
+            ListAllBooks_listbox.Items.Clear();
+
+            foreach (var book in allBooks)
             {
-                lbBooks.Items.Add(book);
+                ListAllBooks_listbox.Items.Add(book); 
             }
         }
 
@@ -49,9 +60,30 @@ namespace Library
             if (b != null)
             {
                 b.Title = "Yoyoma";
-                bookService.Edit(b);
+                _bookService.Edit(b);
             }
         }
-        
+
+        private void LibraryForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SearchBookByAuthor_txtbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ListAllBooks_listbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }
