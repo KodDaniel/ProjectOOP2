@@ -25,11 +25,15 @@ namespace Library.Repositories
         public void Add(Loan item)
         {
             context.Loan.Add(item);
+            context.SaveChanges();
+
         }
 
         public void Remove(Loan item)
         {
             context.Loan.Remove(item);
+            context.SaveChanges();
+
         }
 
         public Loan Find(int id)

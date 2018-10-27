@@ -23,11 +23,15 @@ namespace Library.Repositories
         public void Add(Book item)
         {
             context.Books.Add(item);
+            context.SaveChanges();
+
         }
 
         public void Remove(Book item)
         {
             context.Books.Remove(item);
+            context.SaveChanges();
+
         }
 
         public Book Find(int id)

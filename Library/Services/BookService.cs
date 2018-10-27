@@ -31,6 +31,12 @@ namespace Library.Services
         public void AddBook(Book book)
         {
             bookRepository.Add(book);
+
+            if (Updated != null)
+            {
+                Updated(this, EventArgs.Empty);
+
+            }
         }
 
         public void RemoveBook(Book book)

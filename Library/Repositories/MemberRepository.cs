@@ -24,11 +24,15 @@ namespace Library.Repositories
         public void Add(Member item)
         {
             context.Members.Add(item);
+            context.SaveChanges();
+
         }
 
         public void Remove(Member item)
         {
             context.Members.Add(item);
+            context.SaveChanges();
+
         }
 
         public Member Find(int id)

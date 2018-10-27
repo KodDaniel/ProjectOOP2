@@ -28,6 +28,12 @@ namespace Library.Services
         public void AddAuthor(Author author)
         {
             authorRepository.Add(author);
+
+            if (Updated != null)
+            {
+                Updated(this, EventArgs.Empty);
+
+            }
         }
 
         public void RemoveAuthor(Author author)

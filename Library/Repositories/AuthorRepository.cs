@@ -18,17 +18,20 @@ namespace Library.Repositories
 
         public IEnumerable<Author> All()
         {
-            return context.Authors.ToList();
+            return context.Authors;
         }
 
         public void Add(Author item)
         {
             context.Authors.Add(item);
+            context.SaveChanges();
         }
 
         public void Remove(Author item)
         {
             context.Authors.Remove(item);
+            context.SaveChanges();
+
 
         }
 

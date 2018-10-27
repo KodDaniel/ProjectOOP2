@@ -24,9 +24,9 @@ namespace Library
 
         public LibraryForm()
         {
+
             InitializeComponent();
-     
-            RepositoryFactory repoFactory = new RepositoryFactory(ContextSingelton.GetContext());
+            RepositoryFactory repoFactory = new RepositoryFactory(ContextSingelton.GetContext());          
 
             _bookService = new BookService(repoFactory);
             _authorService = new AuthorService(repoFactory);
@@ -34,6 +34,17 @@ namespace Library
             _memberService = new MemberService(repoFactory);
             _loanService = new LoanService(repoFactory);
 
+            // Event subsciptions
+            _bookService.Updated += OnUpdateListAllBooks;
+            _authorService.Updated += OnUpdateFillComboBoxes;
+
+            // Fyller Combos
+            FillComboBoxes();
+
+           
+
+
+       
         }
 
         private void tabPage1_Click(object sender, EventArgs e)
@@ -106,15 +117,71 @@ namespace Library
 
         }
 
+        void FillComboBoxes()
+        {
+            AddBookAuthor_ComboBox.Items.Clear();
+
+            foreach (Author author in _authorService.AllAuthors())
+            {
+               AddBookAuthor_ComboBox.Items.Add(author);         
+            }
+        }
+
+        // Buttons
+        private void AddBook_Button_Click(object sender, EventArgs e)
+        {
+            Book book = new Book()
+            {
+                Isbn = AddBookISBN_textbox.Text,
+                Title = AddBookTitle_TextBox.Text,
+                Description = AddBookDescription_TextBox.Text,
+                Author = (Author)AddBookAuthor_ComboBox.SelectedItem,
+                //Copies = (int)Copies_Numeric.Value
+            };
+
+            _bookService.AddBook(book);
+
+            AddBookISBN_textbox.Clear();
+            AddBookTitle_TextBox.Clear();
+            AddBookDescription_TextBox.Clear();
+            AddBookAuthor_ComboBox.Text= "";
+
+
+
+        }
+
+        private void AddAuthor_Btn_Click(object sender, EventArgs e)
+        {
+            Author author = new Author() { Name = AddAuthorName_textbox.Text };
+            _authorService.AddAuthor(author);
+            AddAuthorName_textbox.Clear();
+        }
+
         private void ListAllBooks_Btn_Click(object sender, EventArgs e)
         {
+             ListAllBooks_listBox.Items.Clear();
+
             var allBooks = _bookService.All();
 
             foreach (var book in allBooks)
             {
                 ListAllBooks_listBox.Items.Add(book.Title);
-                ListAllBooks_listBox.Items.Add("------------------------------");
             }
         }
+
+      
+
+
+        // Event Recivers
+        void OnUpdateListAllBooks(object source, EventArgs args)
+        {
+            ListAllBooks_Btn_Click(source, args);
+        }
+        void OnUpdateFillComboBoxes(object source, EventArgs args)
+        {
+            FillComboBoxes();
+        }
+
+      
     }
 }
