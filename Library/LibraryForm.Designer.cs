@@ -30,6 +30,8 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.AuthorToSearchByComboBox = new System.Windows.Forms.ComboBox();
             this.SearchBooksByAuthor_Btn = new System.Windows.Forms.Button();
             this.SearchBookByAuthor_label = new System.Windows.Forms.Label();
             this.SearchBooksByAuthor_listbox = new System.Windows.Forms.ListBox();
@@ -55,61 +57,14 @@
             this.AddBookCopies_Label = new System.Windows.Forms.Label();
             this.AddBookAuthor_ComboBox = new System.Windows.Forms.ComboBox();
             this.AddBookNumberOfCopies_drop = new System.Windows.Forms.NumericUpDown();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.AuthorToSearchByComboBox = new System.Windows.Forms.ComboBox();
-            this.tabControl2 = new System.Windows.Forms.TabControl();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.BookDetails_Description_TextBox = new System.Windows.Forms.TextBox();
-            this.BookDetails_ISBN_TextBox = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.MakeLoan_Button = new System.Windows.Forms.Button();
-            this.label19 = new System.Windows.Forms.Label();
-            this.BookDetails_Title_TextBox = new System.Windows.Forms.TextBox();
-            this.BookDetails_AvailableCopies_TextBox = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.BookDetails_Author_TextBox = new System.Windows.Forms.TextBox();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.Title_TextBox = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.Author_ComboBox = new System.Windows.Forms.ComboBox();
-            this.Description_TextBox = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.Copies_Numeric = new System.Windows.Forms.NumericUpDown();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label12 = new System.Windows.Forms.Label();
-            this.EditISBN_TextBox = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.EditBook_Button = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.RemoveBook_Button = new System.Windows.Forms.Button();
-            this.EditBookTitle_TextBox = new System.Windows.Forms.TextBox();
-            this.EditBookCopies_Numeric = new System.Windows.Forms.NumericUpDown();
-            this.EditBookAuthor_ComboBox = new System.Windows.Forms.ComboBox();
-            this.EditBookDescription_TextBox = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AddBookNumberOfCopies_drop)).BeginInit();
-            this.tabPage2.SuspendLayout();
-            this.tabControl2.SuspendLayout();
-            this.tabPage6.SuspendLayout();
-            this.tabPage7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Copies_Numeric)).BeginInit();
-            this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EditBookCopies_Numeric)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(0, 11);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -153,6 +108,23 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click_1);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(595, 369);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.TabIndex = 44;
+            this.label1.Text = "Author";
+            // 
+            // AuthorToSearchByComboBox
+            // 
+            this.AuthorToSearchByComboBox.FormattingEnabled = true;
+            this.AuthorToSearchByComboBox.Location = new System.Drawing.Point(595, 385);
+            this.AuthorToSearchByComboBox.Name = "AuthorToSearchByComboBox";
+            this.AuthorToSearchByComboBox.Size = new System.Drawing.Size(253, 21);
+            this.AuthorToSearchByComboBox.TabIndex = 45;
             // 
             // SearchBooksByAuthor_Btn
             // 
@@ -388,384 +360,6 @@
             this.AddBookNumberOfCopies_drop.TabIndex = 23;
             this.AddBookNumberOfCopies_drop.ValueChanged += new System.EventHandler(this.AddBookNumberOfCopies_drop_ValueChanged);
             // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.Color.DarkGray;
-            this.tabPage2.Controls.Add(this.tabControl2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1293, 590);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(595, 369);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
-            this.label1.TabIndex = 44;
-            this.label1.Text = "Author";
-            // 
-            // AuthorToSearchByComboBox
-            // 
-            this.AuthorToSearchByComboBox.FormattingEnabled = true;
-            this.AuthorToSearchByComboBox.Location = new System.Drawing.Point(595, 385);
-            this.AuthorToSearchByComboBox.Name = "AuthorToSearchByComboBox";
-            this.AuthorToSearchByComboBox.Size = new System.Drawing.Size(253, 21);
-            this.AuthorToSearchByComboBox.TabIndex = 45;
-            // 
-            // tabControl2
-            // 
-            this.tabControl2.Controls.Add(this.tabPage6);
-            this.tabControl2.Controls.Add(this.tabPage7);
-            this.tabControl2.Controls.Add(this.tabPage3);
-            this.tabControl2.Location = new System.Drawing.Point(3, 3);
-            this.tabControl2.Name = "tabControl2";
-            this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(1319, 600);
-            this.tabControl2.TabIndex = 10;
-            // 
-            // tabPage6
-            // 
-            this.tabPage6.Controls.Add(this.BookDetails_Description_TextBox);
-            this.tabPage6.Controls.Add(this.BookDetails_ISBN_TextBox);
-            this.tabPage6.Controls.Add(this.label16);
-            this.tabPage6.Controls.Add(this.label20);
-            this.tabPage6.Controls.Add(this.MakeLoan_Button);
-            this.tabPage6.Controls.Add(this.label19);
-            this.tabPage6.Controls.Add(this.BookDetails_Title_TextBox);
-            this.tabPage6.Controls.Add(this.BookDetails_AvailableCopies_TextBox);
-            this.tabPage6.Controls.Add(this.label17);
-            this.tabPage6.Controls.Add(this.label18);
-            this.tabPage6.Controls.Add(this.BookDetails_Author_TextBox);
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(1311, 574);
-            this.tabPage6.TabIndex = 0;
-            this.tabPage6.Text = "Loan Book";
-            this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // BookDetails_Description_TextBox
-            // 
-            this.BookDetails_Description_TextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.BookDetails_Description_TextBox.Location = new System.Drawing.Point(278, 18);
-            this.BookDetails_Description_TextBox.Multiline = true;
-            this.BookDetails_Description_TextBox.Name = "BookDetails_Description_TextBox";
-            this.BookDetails_Description_TextBox.ReadOnly = true;
-            this.BookDetails_Description_TextBox.Size = new System.Drawing.Size(641, 178);
-            this.BookDetails_Description_TextBox.TabIndex = 19;
-            // 
-            // BookDetails_ISBN_TextBox
-            // 
-            this.BookDetails_ISBN_TextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.BookDetails_ISBN_TextBox.Location = new System.Drawing.Point(6, 97);
-            this.BookDetails_ISBN_TextBox.Name = "BookDetails_ISBN_TextBox";
-            this.BookDetails_ISBN_TextBox.ReadOnly = true;
-            this.BookDetails_ISBN_TextBox.Size = new System.Drawing.Size(253, 20);
-            this.BookDetails_ISBN_TextBox.TabIndex = 18;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(6, 3);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(27, 13);
-            this.label16.TabIndex = 9;
-            this.label16.Text = "Title";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(6, 81);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(32, 13);
-            this.label20.TabIndex = 17;
-            this.label20.Text = "ISBN";
-            // 
-            // MakeLoan_Button
-            // 
-            this.MakeLoan_Button.Enabled = false;
-            this.MakeLoan_Button.Location = new System.Drawing.Point(735, 202);
-            this.MakeLoan_Button.Name = "MakeLoan_Button";
-            this.MakeLoan_Button.Size = new System.Drawing.Size(184, 23);
-            this.MakeLoan_Button.TabIndex = 8;
-            this.MakeLoan_Button.Text = "Loan Book";
-            this.MakeLoan_Button.UseVisualStyleBackColor = true;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(275, 2);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(60, 13);
-            this.label19.TabIndex = 15;
-            this.label19.Text = "Description";
-            // 
-            // BookDetails_Title_TextBox
-            // 
-            this.BookDetails_Title_TextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.BookDetails_Title_TextBox.Location = new System.Drawing.Point(6, 19);
-            this.BookDetails_Title_TextBox.Name = "BookDetails_Title_TextBox";
-            this.BookDetails_Title_TextBox.ReadOnly = true;
-            this.BookDetails_Title_TextBox.Size = new System.Drawing.Size(253, 20);
-            this.BookDetails_Title_TextBox.TabIndex = 10;
-            // 
-            // BookDetails_AvailableCopies_TextBox
-            // 
-            this.BookDetails_AvailableCopies_TextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.BookDetails_AvailableCopies_TextBox.Location = new System.Drawing.Point(6, 136);
-            this.BookDetails_AvailableCopies_TextBox.Name = "BookDetails_AvailableCopies_TextBox";
-            this.BookDetails_AvailableCopies_TextBox.ReadOnly = true;
-            this.BookDetails_AvailableCopies_TextBox.Size = new System.Drawing.Size(253, 20);
-            this.BookDetails_AvailableCopies_TextBox.TabIndex = 14;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 42);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(38, 13);
-            this.label17.TabIndex = 11;
-            this.label17.Text = "Author";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(6, 120);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(84, 13);
-            this.label18.TabIndex = 13;
-            this.label18.Text = "Available copies";
-            // 
-            // BookDetails_Author_TextBox
-            // 
-            this.BookDetails_Author_TextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.BookDetails_Author_TextBox.Location = new System.Drawing.Point(6, 58);
-            this.BookDetails_Author_TextBox.Name = "BookDetails_Author_TextBox";
-            this.BookDetails_Author_TextBox.ReadOnly = true;
-            this.BookDetails_Author_TextBox.Size = new System.Drawing.Size(253, 20);
-            this.BookDetails_Author_TextBox.TabIndex = 12;
-            // 
-            // tabPage7
-            // 
-            this.tabPage7.Controls.Add(this.label2);
-            this.tabPage7.Controls.Add(this.button1);
-            this.tabPage7.Controls.Add(this.Title_TextBox);
-            this.tabPage7.Controls.Add(this.label3);
-            this.tabPage7.Controls.Add(this.label4);
-            this.tabPage7.Controls.Add(this.Author_ComboBox);
-            this.tabPage7.Controls.Add(this.Description_TextBox);
-            this.tabPage7.Controls.Add(this.label5);
-            this.tabPage7.Controls.Add(this.Copies_Numeric);
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(1311, 574);
-            this.tabPage7.TabIndex = 1;
-            this.tabPage7.Text = "Add Book";
-            this.tabPage7.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(27, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Title";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(700, 202);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(219, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Add book";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // Title_TextBox
-            // 
-            this.Title_TextBox.Location = new System.Drawing.Point(6, 19);
-            this.Title_TextBox.Name = "Title_TextBox";
-            this.Title_TextBox.Size = new System.Drawing.Size(253, 20);
-            this.Title_TextBox.TabIndex = 0;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 42);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Author";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 86);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Copies";
-            // 
-            // Author_ComboBox
-            // 
-            this.Author_ComboBox.FormattingEnabled = true;
-            this.Author_ComboBox.Location = new System.Drawing.Point(6, 58);
-            this.Author_ComboBox.Name = "Author_ComboBox";
-            this.Author_ComboBox.Size = new System.Drawing.Size(253, 21);
-            this.Author_ComboBox.TabIndex = 5;
-            // 
-            // Description_TextBox
-            // 
-            this.Description_TextBox.Location = new System.Drawing.Point(278, 19);
-            this.Description_TextBox.Multiline = true;
-            this.Description_TextBox.Name = "Description_TextBox";
-            this.Description_TextBox.Size = new System.Drawing.Size(641, 177);
-            this.Description_TextBox.TabIndex = 2;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(275, 3);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 13);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Description";
-            // 
-            // Copies_Numeric
-            // 
-            this.Copies_Numeric.Location = new System.Drawing.Point(6, 102);
-            this.Copies_Numeric.Name = "Copies_Numeric";
-            this.Copies_Numeric.Size = new System.Drawing.Size(253, 20);
-            this.Copies_Numeric.TabIndex = 6;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.label12);
-            this.tabPage3.Controls.Add(this.EditISBN_TextBox);
-            this.tabPage3.Controls.Add(this.label6);
-            this.tabPage3.Controls.Add(this.EditBook_Button);
-            this.tabPage3.Controls.Add(this.label8);
-            this.tabPage3.Controls.Add(this.RemoveBook_Button);
-            this.tabPage3.Controls.Add(this.EditBookTitle_TextBox);
-            this.tabPage3.Controls.Add(this.EditBookCopies_Numeric);
-            this.tabPage3.Controls.Add(this.EditBookAuthor_ComboBox);
-            this.tabPage3.Controls.Add(this.EditBookDescription_TextBox);
-            this.tabPage3.Controls.Add(this.label7);
-            this.tabPage3.Controls.Add(this.label9);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1311, 574);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Edit/Delete Book";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 81);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(32, 13);
-            this.label12.TabIndex = 19;
-            this.label12.Text = "ISBN";
-            // 
-            // EditISBN_TextBox
-            // 
-            this.EditISBN_TextBox.Location = new System.Drawing.Point(8, 97);
-            this.EditISBN_TextBox.Name = "EditISBN_TextBox";
-            this.EditISBN_TextBox.Size = new System.Drawing.Size(253, 20);
-            this.EditISBN_TextBox.TabIndex = 18;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 2);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(27, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Title";
-            // 
-            // EditBook_Button
-            // 
-            this.EditBook_Button.Location = new System.Drawing.Point(773, 203);
-            this.EditBook_Button.Name = "EditBook_Button";
-            this.EditBook_Button.Size = new System.Drawing.Size(145, 23);
-            this.EditBook_Button.TabIndex = 17;
-            this.EditBook_Button.Text = "Update book";
-            this.EditBook_Button.UseVisualStyleBackColor = true;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 41);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(38, 13);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "Author";
-            // 
-            // RemoveBook_Button
-            // 
-            this.RemoveBook_Button.BackColor = System.Drawing.Color.Transparent;
-            this.RemoveBook_Button.Location = new System.Drawing.Point(622, 203);
-            this.RemoveBook_Button.Name = "RemoveBook_Button";
-            this.RemoveBook_Button.Size = new System.Drawing.Size(145, 23);
-            this.RemoveBook_Button.TabIndex = 16;
-            this.RemoveBook_Button.Text = "Delete book";
-            this.RemoveBook_Button.UseVisualStyleBackColor = false;
-            // 
-            // EditBookTitle_TextBox
-            // 
-            this.EditBookTitle_TextBox.Location = new System.Drawing.Point(8, 18);
-            this.EditBookTitle_TextBox.Name = "EditBookTitle_TextBox";
-            this.EditBookTitle_TextBox.Size = new System.Drawing.Size(253, 20);
-            this.EditBookTitle_TextBox.TabIndex = 9;
-            // 
-            // EditBookCopies_Numeric
-            // 
-            this.EditBookCopies_Numeric.Location = new System.Drawing.Point(7, 136);
-            this.EditBookCopies_Numeric.Name = "EditBookCopies_Numeric";
-            this.EditBookCopies_Numeric.Size = new System.Drawing.Size(253, 20);
-            this.EditBookCopies_Numeric.TabIndex = 15;
-            // 
-            // EditBookAuthor_ComboBox
-            // 
-            this.EditBookAuthor_ComboBox.FormattingEnabled = true;
-            this.EditBookAuthor_ComboBox.Location = new System.Drawing.Point(8, 57);
-            this.EditBookAuthor_ComboBox.Name = "EditBookAuthor_ComboBox";
-            this.EditBookAuthor_ComboBox.Size = new System.Drawing.Size(252, 21);
-            this.EditBookAuthor_ComboBox.TabIndex = 14;
-            // 
-            // EditBookDescription_TextBox
-            // 
-            this.EditBookDescription_TextBox.Location = new System.Drawing.Point(277, 16);
-            this.EditBookDescription_TextBox.Multiline = true;
-            this.EditBookDescription_TextBox.Name = "EditBookDescription_TextBox";
-            this.EditBookDescription_TextBox.Size = new System.Drawing.Size(641, 181);
-            this.EditBookDescription_TextBox.TabIndex = 11;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 120);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(39, 13);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "Copies";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(274, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(60, 13);
-            this.label9.TabIndex = 12;
-            this.label9.Text = "Description";
-            // 
             // LibraryForm
             // 
             this.ClientSize = new System.Drawing.Size(1330, 639);
@@ -775,16 +369,6 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AddBookNumberOfCopies_drop)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.tabControl2.ResumeLayout(false);
-            this.tabPage6.ResumeLayout(false);
-            this.tabPage6.PerformLayout();
-            this.tabPage7.ResumeLayout(false);
-            this.tabPage7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Copies_Numeric)).EndInit();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EditBookCopies_Numeric)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -802,7 +386,6 @@
         private System.Windows.Forms.Label AddBookCopies_Label;
         private System.Windows.Forms.ComboBox AddBookAuthor_ComboBox;
         private System.Windows.Forms.NumericUpDown AddBookNumberOfCopies_drop;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button ListAllBooks_Btn;
         private System.Windows.Forms.Label ListAllBooks_label;
         private System.Windows.Forms.ListBox ListAllBooks_listBox;
@@ -819,42 +402,6 @@
         private System.Windows.Forms.ListBox SearchBooksByAuthor_listbox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox AuthorToSearchByComboBox;
-        private System.Windows.Forms.TabControl tabControl2;
-        private System.Windows.Forms.TabPage tabPage6;
-        private System.Windows.Forms.TextBox BookDetails_Description_TextBox;
-        private System.Windows.Forms.TextBox BookDetails_ISBN_TextBox;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Button MakeLoan_Button;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox BookDetails_Title_TextBox;
-        private System.Windows.Forms.TextBox BookDetails_AvailableCopies_TextBox;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox BookDetails_Author_TextBox;
-        private System.Windows.Forms.TabPage tabPage7;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox Title_TextBox;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox Author_ComboBox;
-        private System.Windows.Forms.TextBox Description_TextBox;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.NumericUpDown Copies_Numeric;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox EditISBN_TextBox;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button EditBook_Button;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button RemoveBook_Button;
-        private System.Windows.Forms.TextBox EditBookTitle_TextBox;
-        private System.Windows.Forms.NumericUpDown EditBookCopies_Numeric;
-        private System.Windows.Forms.ComboBox EditBookAuthor_ComboBox;
-        private System.Windows.Forms.TextBox EditBookDescription_TextBox;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label9;
     }
 }
     
