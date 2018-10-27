@@ -130,31 +130,57 @@ namespace Library
         // Buttons
         private void AddBook_Button_Click(object sender, EventArgs e)
         {
-            Book book = new Book()
+            // Skapar lista för smidig validering
+            List<string> validationList = new List<string>
             {
-                Isbn = AddBookISBN_textbox.Text,
-                Title = AddBookTitle_TextBox.Text,
-                Description = AddBookDescription_TextBox.Text,
-                Author = (Author)AddBookAuthor_ComboBox.SelectedItem,
-                //Copies = (int)Copies_Numeric.Value
+                AddBookISBN_textbox.Text,
+                AddBookTitle_TextBox.Text,
+                AddBookDescription_TextBox.Text,
             };
 
-            _bookService.AddBook(book);
+            if (CheckInput(validationList) && AddBookAuthor_ComboBox.SelectedItem != null)
+            {
+                Book book = new Book()
+                {
+                    Isbn = AddBookISBN_textbox.Text,
+                    Title = AddBookTitle_TextBox.Text,
+                    Description = AddBookDescription_TextBox.Text,
+                    // Casting
+                    Author = (Author)AddBookAuthor_ComboBox.SelectedItem,
+                    BookCopies = (int)AddBookNumberOfCopies_drop.Value
+                };
 
-            AddBookISBN_textbox.Clear();
-            AddBookTitle_TextBox.Clear();
-            AddBookDescription_TextBox.Clear();
-            AddBookAuthor_ComboBox.Text= "";
+                _bookService.AddBook(book);
 
+                for (int i = 0; i < book.BookCopies; i++)
+                {
+                    BookCopy bookCopy = new BookCopy()
+                    {
+                        Book = book
+                    };
 
+                    _bookCopyService.AddBookCopy(bookCopy);
+                }
 
+                AddBookISBN_textbox.Clear();
+                AddBookTitle_TextBox.Clear();
+                AddBookDescription_TextBox.Clear();
+                AddBookAuthor_ComboBox.Text = "";
+            }
+   
         }
 
         private void AddAuthor_Btn_Click(object sender, EventArgs e)
         {
-            Author author = new Author() { Name = AddAuthorName_textbox.Text };
-            _authorService.AddAuthor(author);
-            AddAuthorName_textbox.Clear();
+            var name = AddAuthorName_textbox.Text;
+
+            if (CheckInput(name))
+            {
+                Author author = new Author();
+                _authorService.AddAuthor(author);
+                AddAuthorName_textbox.Clear();
+            }
+            
         }
 
         private void ListAllBooks_Btn_Click(object sender, EventArgs e)
@@ -165,13 +191,10 @@ namespace Library
 
             foreach (var book in allBooks)
             {
-                ListAllBooks_listBox.Items.Add(book.Title);
+                ListAllBooks_listBox.Items.Add("Titel: " + book.Title + ". Kopior: " +book.BookCopies +".");          
             }
         }
-
-      
-
-
+   
         // Event Recivers
         void OnUpdateListAllBooks(object source, EventArgs args)
         {
@@ -182,6 +205,30 @@ namespace Library
             FillComboBoxes();
         }
 
-      
+        // Validering
+        bool CheckInput(List<string> input)
+        {
+            foreach (string text in input)
+            {
+                if (string.IsNullOrEmpty(text))
+                {
+                    MessageBox.Show(@"Du måste fylla i alla fält.", @"Ogitlig input.");
+                    return false;
+                }
+            }
+            return true;
+        }
+
+       // Overlodar CheckInput
+        bool CheckInput(string input)
+        {
+            List<string> list = new List<string>()
+            {
+                input
+            };
+            return CheckInput(list);
+        }
+
+
     }
 }
