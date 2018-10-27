@@ -48,5 +48,16 @@ namespace Library.Repositories
             // layer doesn't know we use EF. If in the future we decide to switch EF to something else, 
             // we won't have to change the service layer.
         }
+        //public IEnumerable<Test> GetAllTestsForThisUserName(string userName)
+        //{
+        //    return _context.Test.
+        //        Include(a => a.User).Include(a => a.Questions)
+        //        .Where(a => a.User.UserName == userName)
+        //        .OrderByDescending(c => c.CreateDate)
+        //        .ThenByDescending(c => c.ChangeDate)
+        //        .ToList();
+        //}
+
+        
     }
 }

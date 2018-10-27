@@ -28,6 +28,11 @@ namespace Library.Services
         return bookRepository.All();
     }
 
+        public IEnumerable<Book> AllBooksByAuthor(Author author)
+        {
+            return bookRepository.All().Where(b => b.Author.Id == author.Id);
+        }
+
         public void AddBook(Book book)
         {
             bookRepository.Add(book);

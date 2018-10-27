@@ -125,6 +125,13 @@ namespace Library
             {
                AddBookAuthor_ComboBox.Items.Add(author);         
             }
+
+            AuthorToSearchByComboBox.Items.Clear();
+
+            foreach (Author author in _authorService.AllAuthors())
+            {
+                AuthorToSearchByComboBox.Items.Add(author);
+            }
         }
 
         // Buttons
@@ -176,7 +183,7 @@ namespace Library
 
             if (CheckInput(name))
             {
-                Author author = new Author();
+                Author author = new Author {Name = name};
                 _authorService.AddAuthor(author);
                 AddAuthorName_textbox.Clear();
             }
@@ -191,10 +198,40 @@ namespace Library
 
             foreach (var book in allBooks)
             {
-                ListAllBooks_listBox.Items.Add("Titel: " + book.Title + ". Kopior: " +book.BookCopies +".");          
+                ListAllBooks_listBox.Items.Add("Titel: " + book.Title + ". Kopior: " + book.BookCopies +".");          
             }
         }
-   
+
+        private void ListAllAuthors_Btn_Click(object sender, EventArgs e)
+        {
+
+            ListAllAuthors_listbox.Items.Clear();
+
+            var allAuthors = _authorService.AllAuthors();
+
+            foreach (var author in allAuthors)
+            {
+                ListAllAuthors_listbox.Items.Add(author.Name);
+            }
+        }
+
+        private void SearchBooksByAuthor_Btn_Click(object sender, EventArgs e)
+        {
+            Author author = (Author) AuthorToSearchByComboBox.SelectedItem;
+
+            if (author != null)
+            {
+                var allAuthorsByBook = _bookService.AllBooksByAuthor(author);
+
+                foreach (var book in allAuthorsByBook)
+                {
+                    SearchBooksByAuthor_listbox.Items.Add(book.Title);
+
+                }
+
+            }
+        }
+
         // Event Recivers
         void OnUpdateListAllBooks(object source, EventArgs args)
         {
@@ -229,6 +266,6 @@ namespace Library
             return CheckInput(list);
         }
 
-
+       
     }
 }
