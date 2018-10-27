@@ -132,6 +132,8 @@ namespace Library
             {
                 AuthorToSearchByComboBox.Items.Add(author);
             }
+
+
         }
 
         // Buttons
@@ -266,6 +268,29 @@ namespace Library
             return CheckInput(list);
         }
 
-       
+        private void MakeLoan_Button_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Author_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EditBook_Button_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RemoveBook_Button_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EditBookCopies_Numeric_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
