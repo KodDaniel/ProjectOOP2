@@ -26,8 +26,14 @@ namespace Library.Repositories
         {
             context.BookCopies.Add(item);
             context.SaveChanges();
-
         }
+
+
+        public int GetNumberOfCopiesByBookId(int id)
+        {
+            return All().Count(b => b.Book.Id == id);
+        }
+
 
         public void Remove(BookCopy item)
         {

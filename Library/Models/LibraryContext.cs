@@ -57,6 +57,11 @@ namespace Library.Models {
             modelBuilder.Entity<Loan>().HasRequired(a => a.Member);
             modelBuilder.Entity<Loan>().HasRequired(a => a.BookCopy);
 
+            //modelBuilder.Entity<BookCopy>()
+            //    .HasRequired(c => c.Book)
+            //    .WithMany(d => d.BookCopy)
+            //    .HasForeignKey(c => c.Book_Id);
+
             base.OnModelCreating(modelBuilder);
         }
     }

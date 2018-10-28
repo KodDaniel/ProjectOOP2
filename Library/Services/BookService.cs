@@ -47,6 +47,11 @@ namespace Library.Services
         public void RemoveBook(Book book)
         {
             bookRepository.Remove(book);
+            if (Updated != null)
+            {
+                Updated(this, EventArgs.Empty);
+
+            }
         }
 
         public Book FindBook(int key)
@@ -61,16 +66,20 @@ namespace Library.Services
             select b;
     }
 
-    /// <summary>
-    /// The Edit method makes sure that the given Book object is saved to the database and raises the Updated() event.
-    /// </summary>
-    /// <param name="b"></param>
-    public void Edit(Book b)
-    {
-        bookRepository.Edit(b);
-        // TODO: Raise the Updated event.
-    }
+        /// <summary>
+        /// The Edit method makes sure that the given Book object is saved to the database and raises the Updated() event.
+        /// </summary>
+        /// <param name="b"></param>
+        public void Edit(Book book)
+        {
+            bookRepository.Edit(book);
+            if (Updated != null)
+            {
+                Updated(this, EventArgs.Empty);
 
-        
+            }
+        }
+
+
     }
 }

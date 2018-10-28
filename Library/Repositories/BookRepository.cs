@@ -39,14 +39,17 @@ namespace Library.Repositories
             return context.Books.Find(id);
         }
 
-        public void Edit(Book b)
+        public void Edit(Book item)
         {
-            // Because the object b was retrieved through the same context, we don't need to do a lookup. 
-            // We can just tell the context to save any changes that happened.
+            Book oldBook = context.Books.FirstOrDefault(b => b.Id == item.Id);
+
+            oldBook.Title = item.Title;
+            oldBook.Isbn = item.Isbn;
+            oldBook.Author = item.Author;
+            oldBook.BookCopies = item.BookCopies;
+            oldBook.Description = item.Description;
+
             context.SaveChanges();
-            // Then why do we still pass the Book object all the way to the repository? Because the service
-            // layer doesn't know we use EF. If in the future we decide to switch EF to something else, 
-            // we won't have to change the service layer.
         }
         //public IEnumerable<Test> GetAllTestsForThisUserName(string userName)
         //{
@@ -58,6 +61,6 @@ namespace Library.Repositories
         //        .ToList();
         //}
 
-        
+
     }
 }

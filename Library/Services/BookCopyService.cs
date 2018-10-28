@@ -24,6 +24,12 @@ namespace Library.Services
            return bookCopyRepository.All();
         }
 
+        public int GetNumberOfCopiesByBookId(int id)
+        {
+            return bookCopyRepository.GetNumberOfCopiesByBookId(id);
+        }
+
+
         public void AddBookCopy(BookCopy bookCopy)
         {
             bookCopyRepository.Add(bookCopy);
