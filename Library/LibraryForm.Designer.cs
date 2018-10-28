@@ -163,6 +163,7 @@
             this.SearchBookByAuthor_Btn.TabIndex = 41;
             this.SearchBookByAuthor_Btn.Text = "Search";
             this.SearchBookByAuthor_Btn.UseVisualStyleBackColor = true;
+            this.SearchBookByAuthor_Btn.Click += new System.EventHandler(this.SearchBookByAuthor_Btn_Click);
             // 
             // SearchBookByAuthor_combobox
             // 

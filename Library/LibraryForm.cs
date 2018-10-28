@@ -113,6 +113,14 @@ namespace Library
         // Buttons
         #region Buttons
 
+        private void SearchBookByAuthor_Btn_Click(object sender, EventArgs e)
+        {
+            if (SearchBookByAuthor_combobox.SelectedItem != null)
+            {
+                var booksByThisAuthor = _bookService.AllBooksByAuthor((Author)SearchBookByAuthor_combobox.SelectedItem);
+                DisplayBooks(booksByThisAuthor);
+            }
+        }
         private void ListAllBooks_btn_Click(object sender, EventArgs e)
         {
             FillComboBoxes();
@@ -377,6 +385,6 @@ namespace Library
 
         }
 
-       
+        
     }
 }
