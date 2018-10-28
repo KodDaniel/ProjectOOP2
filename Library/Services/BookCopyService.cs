@@ -28,7 +28,10 @@ namespace Library.Services
         {
             return bookCopyRepository.GetNumberOfCopiesByBookId(id);
         }
-
+        public BookCopy GetBookCopyByBookId(int id)
+        {
+            return AllBookCopies().FirstOrDefault(b => b.Book.Id == id);
+        }
 
         public void AddBookCopy(BookCopy bookCopy)
         {

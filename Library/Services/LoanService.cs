@@ -28,6 +28,22 @@ namespace Library.Services
         {
             loanRepository.Add(loan);
         }
+        public bool AvailableCopies(Book book)
+        {
+            if (GetNumberOfCurrentLoansByBook(book) < book.BookCopies)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public int GetNumberOfCurrentLoansByBook(Book book)
+        {
+            return AllLoans().Count(l => l.BookCopy.Book == book && l.TimeOfReturn == null);
+        }
 
         public void RemoveLoan(Loan loan)
         {

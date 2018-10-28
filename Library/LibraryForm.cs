@@ -24,7 +24,6 @@ namespace Library
 
         public LibraryForm()
         {
-
             InitializeComponent();
             RepositoryFactory repoFactory = new RepositoryFactory(ContextSingelton.GetContext());          
 
@@ -34,21 +33,25 @@ namespace Library
             _memberService = new MemberService(repoFactory);
             _loanService = new LoanService(repoFactory);
 
+            // Fyller Combos
+            FillComboBoxes();
+
             // Event subsciptions
             _bookService.Updated += OnUpdateFillComboBoxes;
             _authorService.Updated += OnUpdateFillComboBoxes;
+            
+            //_memberService.Updated += OnDisplayAllMembers;
 
-            // Fyller Combos
-            FillComboBoxes();          
+            // Ska ej gå att låna utan att välja medlem
+            LoanBook_Btn.Enabled = false;
         }
     
 
-        //Returns the book currently selected in the gridview
         private Book GetSelectedBook()
         {
-            if (GridViewAll.SelectedRows[0].Cells["Id"] != null)
+            if (BookGrid.SelectedRows[0].Cells["Id"] != null)
             {
-                int id = (int)GridViewAll.SelectedRows[0].Cells["Id"].Value;
+                int id = (int)BookGrid.SelectedRows[0].Cells["Id"].Value;
                 return _bookService.FindBook(id);
             }
 
@@ -58,20 +61,20 @@ namespace Library
 
         void DisplayBooks(IEnumerable<Book> books)
         {
-            GridViewAll.Rows.Clear();
+            BookGrid.Rows.Clear();
 
             int index = 0;
 
             foreach (Book book in books)
             {
-                GridViewAll.Rows.Add();
-                GridViewAll["Title", index].Value = book.Title;
-                GridViewAll["Description", index].Value = book.Description;
-                GridViewAll["Author", index].Value = book.Author.Name;
-                GridViewAll["Copies", index].Value = _bookCopyService.GetNumberOfCopiesByBookId(book.Id);
+                BookGrid.Rows.Add();
+                BookGrid["Title", index].Value = book.Title;
+                BookGrid["Description", index].Value = book.Description;
+                BookGrid["Author", index].Value = book.Author.Name;
+                BookGrid["Copies", index].Value = _bookCopyService.GetNumberOfCopiesByBookId(book.Id);
                 //GridViewAll["AvailableCopies", index].Value = Copies- _loanService.GetNumberOfCurrentLoansByBook(book);
-                GridViewAll["ISBN", index].Value = book.Isbn;
-                GridViewAll["ID", index].Value = book.Id;
+                BookGrid["ISBN", index].Value = book.Isbn;
+                BookGrid["ID", index].Value = book.Id;
 
                 index++;
             }
@@ -105,14 +108,24 @@ namespace Library
             {
                 SearchBookByAuthor_combobox.Items.Add(author);
             }
-           
+
+            foreach (var member in _memberService.AllMembers())
+            {
+                Member_ComboBox.Items.Add(member.Name);
+                AllMembers_listbox.Items.Add(member.Name);
+            }
+
         }
-
-
 
         // Buttons
         #region Buttons
+        private void LoanBook_Btn_Click(object sender, EventArgs e)
+        {
+            //int iD = (int)GridViewAll.CurrentRow.Cells["Id"].Value;
+            //var book = _bookService.FindBook(iD);
+            //var bookCopy = _bookCopyService.GetBookCopyByBookId(iD);
 
+        }
         private void SearchBookByAuthor_Btn_Click(object sender, EventArgs e)
         {
             if (SearchBookByAuthor_combobox.SelectedItem != null)
@@ -139,7 +152,7 @@ namespace Library
             var newAuthor = AddBookAuthor_ComboBox.SelectedItem;
             var newDescription = AddBookDescription_TextBox.Text;
             var newNumberOfCopies = AddBookNumberOfCopies_drop.Value;
-            int id = (int)GridViewAll.SelectedRows[0].Cells["Id"].Value;
+            int id = (int)BookGrid.SelectedRows[0].Cells["Id"].Value;
 
             if (CheckInput(validationList) && AddBookAuthor_ComboBox.SelectedItem != null)
             {
@@ -214,7 +227,7 @@ namespace Library
 
         private void DeleteBook_btn_Click(object sender, EventArgs e)
         {
-            int id = (int)GridViewAll.SelectedRows[0].Cells["Id"].Value;
+            int id = (int)BookGrid.SelectedRows[0].Cells["Id"].Value;
             var book = _bookService.FindBook(id);
             _bookService.RemoveBook(book);
         }
@@ -224,17 +237,15 @@ namespace Library
 
         }
 
-        private void EditBook_Button_Click(object sender, EventArgs e)
+
+        private void AddMember_Btn_Click(object sender, EventArgs e)
         {
 
         }
 
-       
-
-        private void SearchBooksByAuthor_Btn_Click(object sender, EventArgs e)
+        private void DeleteMember_Btn_Click(object sender, EventArgs e)
         {
 
-           
         }
         #endregion
 
@@ -245,6 +256,8 @@ namespace Library
         {
             FillComboBoxes();
         }
+
+      
         #endregion
 
 
@@ -385,6 +398,29 @@ namespace Library
 
         }
 
-        
+        private void Member_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Det går ej att trycka på lånknappen om ingen medlem är vald.
+            if (Member_ComboBox.SelectedItem != null && BookGrid.SelectedRows != null)
+            {
+                LoanBook_Btn.Enabled = true;
+            }
+            else
+            {
+                LoanBook_Btn.Enabled = false;
+            }
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }
