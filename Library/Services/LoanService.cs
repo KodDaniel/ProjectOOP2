@@ -35,9 +35,15 @@ namespace Library.Services
 
         public void LoanBook(BookCopy bookCopy, Member member)
         {
-            var dateOfLoan = DateTime.Now.AddMonths(-1);
+            var dateOfLoan = DateTime.Now;
 
-            Loan loan = new Loan()
+            if (member.Loans.Count >= 1)
+            {
+                dateOfLoan = DateTime.Now.AddMonths(-1);
+
+            }
+
+            var loan = new Loan()
             {
                 TimeOfLoan = dateOfLoan,
                 DueDate = dateOfLoan.AddDays(14),
@@ -52,7 +58,6 @@ namespace Library.Services
 
         public void ReturnLoan(Loan loan, DateTime timeOfReturn)
         {
-            //var newLoan = loan;
 
             loan.TimeOfReturn = timeOfReturn;
             loanRepository.Edit(loan);
