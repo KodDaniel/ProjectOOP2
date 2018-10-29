@@ -12,5 +12,11 @@ namespace Library.Models
         public string Pnr { get; set; }
         public string Name { get; set; }
         public virtual ICollection<Loan> Loans { get; set; }
+
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

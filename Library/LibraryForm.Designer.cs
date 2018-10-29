@@ -79,7 +79,7 @@
             this.DeleteMember_Btn = new System.Windows.Forms.Button();
             this.AllMembers_listbox = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.LoanGrid = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -96,7 +96,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.AddBookNumberOfCopies_drop)).BeginInit();
             this.MemberAndLoanTab.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LoanGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage1
@@ -573,7 +573,7 @@
             this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.label6);
-            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Controls.Add(this.LoanGrid);
             this.tabPage2.Controls.Add(this.AllMembers_listbox);
             this.tabPage2.Controls.Add(this.DeleteMember_Btn);
             this.tabPage2.Controls.Add(this.AddMember_Btn);
@@ -591,30 +591,30 @@
             this.tabPage2.Text = "Member and Loans";
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click_1);
             // 
-            // dataGridView1
+            // LoanGrid
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.LoanGrid.AllowUserToAddRows = false;
+            this.LoanGrid.AllowUserToDeleteRows = false;
+            this.LoanGrid.AllowUserToResizeRows = false;
+            this.LoanGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.LoanGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.LoanGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.LoanGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDLoan,
             this.TitleLoan,
             this.AuthorLoan,
             this.LoanTime,
             this.DateDue,
             this.DateReturn});
-            this.dataGridView1.Location = new System.Drawing.Point(20, 84);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(904, 451);
-            this.dataGridView1.TabIndex = 436;
-            this.dataGridView1.TabStop = false;
+            this.LoanGrid.Location = new System.Drawing.Point(20, 84);
+            this.LoanGrid.MultiSelect = false;
+            this.LoanGrid.Name = "LoanGrid";
+            this.LoanGrid.ReadOnly = true;
+            this.LoanGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.LoanGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.LoanGrid.Size = new System.Drawing.Size(904, 451);
+            this.LoanGrid.TabIndex = 436;
+            this.LoanGrid.TabStop = false;
             // 
             // label6
             // 
@@ -713,7 +713,7 @@
             this.MemberAndLoanTab.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LoanGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -772,7 +772,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView LoanGrid;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDLoan;
         private System.Windows.Forms.DataGridViewTextBoxColumn TitleLoan;

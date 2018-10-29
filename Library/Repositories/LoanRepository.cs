@@ -26,9 +26,9 @@ namespace Library.Repositories
         {
             context.Loan.Add(item);
             context.SaveChanges();
-
         }
 
+    
         public void Remove(Loan item)
         {
             context.Loan.Remove(item);

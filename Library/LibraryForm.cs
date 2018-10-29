@@ -39,6 +39,7 @@ namespace Library
             // Event subsciptions
             _bookService.Updated += OnUpdateFillComboBoxes;
             _authorService.Updated += OnUpdateFillComboBoxes;
+            _loanService.Updated += OnUpdateFillComboBoxes;
             
             //_memberService.Updated += OnDisplayAllMembers;
 
@@ -59,7 +60,7 @@ namespace Library
 
         }
 
-        void DisplayBooks(IEnumerable<Book> books)
+        void ShowAllBooks(IEnumerable<Book> books)
         {
             BookGrid.Rows.Clear();
 
@@ -80,6 +81,28 @@ namespace Library
             }
         }
 
+        void ShowAllLoans(IEnumerable<Loan> loans)
+        {
+            LoanGrid.Rows.Clear();
+
+            int index = 0;
+
+            foreach (Loan loan in loans)
+            {
+               LoanGrid.Rows.Add();
+               LoanGrid["IDLoan", index].Value = loan.Id;
+               LoanGrid["TitleLoan", index].Value = loan.BookCopy.Book.Title;
+               LoanGrid["AuthorLoan", index].Value = loan.BookCopy.Book.Author.Name;
+               LoanGrid["LoanTime", index].Value = loan.TimeOfLoan;
+                LoanGrid["DateDue", index].Value = loan.DueDate;
+
+                index++;
+            }
+        }
+
+
+      
+
         private void GridViewAll_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var book = GetSelectedBook();
@@ -93,7 +116,8 @@ namespace Library
 
         void FillComboBoxes()
         {
-            DisplayBooks(_bookService.All());
+            ShowAllBooks(_bookService.All());
+            ShowAllLoans(_loanService.AllLoans());
         
             AddBookAuthor_ComboBox.Items.Clear();
 
@@ -109,10 +133,15 @@ namespace Library
                 SearchBookByAuthor_combobox.Items.Add(author);
             }
 
+            Member_ComboBox.Items.Clear();
+            AllMembers_listbox.Items.Clear();
+
+            // Notera: Går bra att ej köra Member.Name här eftersom jag overridar ToString i modellen istället.
+            // Därför blir det smidigare att casta när jag ska låna. 
             foreach (var member in _memberService.AllMembers())
             {
-                Member_ComboBox.Items.Add(member.Name);
-                AllMembers_listbox.Items.Add(member.Name);
+                Member_ComboBox.Items.Add(member);
+                AllMembers_listbox.Items.Add(member);
             }
 
         }
@@ -121,9 +150,19 @@ namespace Library
         #region Buttons
         private void LoanBook_Btn_Click(object sender, EventArgs e)
         {
-            //int iD = (int)GridViewAll.CurrentRow.Cells["Id"].Value;
-            //var book = _bookService.FindBook(iD);
-            //var bookCopy = _bookCopyService.GetBookCopyByBookId(iD);
+            // Hämtar Id för aktuell bok
+             int iD = (int)BookGrid.CurrentRow.Cells["Id"].Value;
+            // Hämtar bok utifrån det
+            var book = _bookService.FindBook(iD);
+            // Hämtar bookcopy utifrån det
+            var bookCopy = _bookCopyService.GetBookCopyByBookId(iD);
+            // Hämtar aktuell member 
+            var currentMember  = (Member)Member_ComboBox.SelectedItem;
+
+            if (_loanService.AvailableCopies(book) && currentMember != null)
+            {
+                _loanService.LoanBook(bookCopy, currentMember);
+            }
 
         }
         private void SearchBookByAuthor_Btn_Click(object sender, EventArgs e)
@@ -131,7 +170,7 @@ namespace Library
             if (SearchBookByAuthor_combobox.SelectedItem != null)
             {
                 var booksByThisAuthor = _bookService.AllBooksByAuthor((Author)SearchBookByAuthor_combobox.SelectedItem);
-                DisplayBooks(booksByThisAuthor);
+                ShowAllBooks(booksByThisAuthor);
             }
         }
         private void ListAllBooks_btn_Click(object sender, EventArgs e)
@@ -162,7 +201,6 @@ namespace Library
                     Isbn = newIsbn,
                     Title = newTitle,
                     Description = newDescription,
-                    // Casting
                     Author = (Author)newAuthor,
                     BookCopies = (int)AddBookNumberOfCopies_drop.Value
                 };
@@ -232,11 +270,6 @@ namespace Library
             _bookService.RemoveBook(book);
         }
 
-        private void MakeLoan_Button_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void AddMember_Btn_Click(object sender, EventArgs e)
         {
@@ -301,7 +334,18 @@ namespace Library
 
 
 
-
+        private void Member_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Det går ej att trycka på lånknappen om ingen medlem är vald.
+            if (Member_ComboBox.SelectedItem != null && BookGrid.SelectedRows != null)
+            {
+                LoanBook_Btn.Enabled = true;
+            }
+            else
+            {
+                LoanBook_Btn.Enabled = false;
+            }
+        }
 
 
 
@@ -398,18 +442,7 @@ namespace Library
 
         }
 
-        private void Member_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //Det går ej att trycka på lånknappen om ingen medlem är vald.
-            if (Member_ComboBox.SelectedItem != null && BookGrid.SelectedRows != null)
-            {
-                LoanBook_Btn.Enabled = true;
-            }
-            else
-            {
-                LoanBook_Btn.Enabled = false;
-            }
-        }
+    
 
         private void tabPage2_Click(object sender, EventArgs e)
         {

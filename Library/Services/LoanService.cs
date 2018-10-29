@@ -23,11 +23,38 @@ namespace Library.Services
         {
             return loanRepository.All();
         }
-
+     
         public void AddLoan(Loan loan)
         {
             loanRepository.Add(loan);
+            if (Updated != null)
+            {
+                Updated(this, EventArgs.Empty);
+            }
         }
+
+        public void LoanBook(BookCopy bookCopy, Member member)
+        {
+            DateTime today = DateTime.Today;
+
+            Loan loan = new Loan()
+            {
+                TimeOfLoan = today,
+                DueDate = today.AddDays(14),
+                BookCopy = bookCopy,
+                Member = member,
+            };
+
+           AddLoan(loan);
+           ConnectMemberAndLoan(loan, member);
+
+        }
+
+        public void ConnectMemberAndLoan(Loan loan, Member member)
+        {
+            member.Loans.Add(loan);
+        }
+
         public bool AvailableCopies(Book book)
         {
             if (GetNumberOfCurrentLoansByBook(book) < book.BookCopies)

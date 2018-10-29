@@ -64,6 +64,8 @@ namespace Library.Models {
                 Name = "Stefan Löfven",
                 Pnr = "550205-5953"
             };
+
+ 
             context.Members.Add(stefanLöfven);
 
             context.SaveChanges();
