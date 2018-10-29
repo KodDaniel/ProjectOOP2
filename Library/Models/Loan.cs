@@ -12,6 +12,7 @@ namespace Library.Models
         public DateTime TimeOfLoan { get; set; }
         public DateTime DueDate { get; set; }
         public DateTime? TimeOfReturn { get; set; }
+        public string Fine { get; set; }
         public virtual BookCopy BookCopy { get; set; }
         public virtual Member Member { get; set; }
     }

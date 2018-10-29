@@ -36,6 +36,7 @@ namespace Library.Models {
             modelBuilder.Entity<Member>().Property(t => t.Name).HasMaxLength(100).IsRequired();
             modelBuilder.Entity<Member>().Property(t => t.Pnr).IsRequired();
 
+
             modelBuilder.Entity<Loan>().Property(t => t.Id).HasColumnName("LoanId");
             modelBuilder.Entity<Loan>().Property(t => t.DueDate).IsRequired();
             modelBuilder.Entity<Loan>().Property(t => t.TimeOfLoan).IsRequired();

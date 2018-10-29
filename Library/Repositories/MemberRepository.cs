@@ -30,7 +30,7 @@ namespace Library.Repositories
 
         public void Remove(Member item)
         {
-            context.Members.Add(item);
+            context.Members.Remove(item);
             context.SaveChanges();
 
         }

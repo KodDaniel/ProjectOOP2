@@ -70,12 +70,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.LoanGrid = new System.Windows.Forms.DataGridView();
-            this.IDLoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TitleLoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AuthorLoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LoanTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateDue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateReturn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AllMembers_listbox = new System.Windows.Forms.ListBox();
             this.DeleteMember_Btn = new System.Windows.Forms.Button();
             this.AddMember_Btn = new System.Windows.Forms.Button();
@@ -92,6 +86,13 @@
             this.LoanTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LoanId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ReturnBook_Btn = new System.Windows.Forms.Button();
+            this.IDLoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TitleLoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AuthorLoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LoanTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateDue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateReturn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FineLoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BookGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddBookNumberOfCopies_drop)).BeginInit();
@@ -542,7 +543,8 @@
             this.AuthorLoan,
             this.LoanTime,
             this.DateDue,
-            this.DateReturn});
+            this.DateReturn,
+            this.FineLoan});
             this.LoanGrid.Location = new System.Drawing.Point(20, 84);
             this.LoanGrid.MultiSelect = false;
             this.LoanGrid.Name = "LoanGrid";
@@ -552,43 +554,6 @@
             this.LoanGrid.Size = new System.Drawing.Size(904, 451);
             this.LoanGrid.TabIndex = 436;
             this.LoanGrid.TabStop = false;
-            // 
-            // IDLoan
-            // 
-            this.IDLoan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.IDLoan.HeaderText = "ID";
-            this.IDLoan.Name = "IDLoan";
-            this.IDLoan.ReadOnly = true;
-            // 
-            // TitleLoan
-            // 
-            this.TitleLoan.HeaderText = "Title";
-            this.TitleLoan.Name = "TitleLoan";
-            this.TitleLoan.ReadOnly = true;
-            // 
-            // AuthorLoan
-            // 
-            this.AuthorLoan.HeaderText = "Author";
-            this.AuthorLoan.Name = "AuthorLoan";
-            this.AuthorLoan.ReadOnly = true;
-            // 
-            // LoanTime
-            // 
-            this.LoanTime.HeaderText = "TimeOfLoan";
-            this.LoanTime.Name = "LoanTime";
-            this.LoanTime.ReadOnly = true;
-            // 
-            // DateDue
-            // 
-            this.DateDue.HeaderText = "Due Date";
-            this.DateDue.Name = "DateDue";
-            this.DateDue.ReadOnly = true;
-            // 
-            // DateReturn
-            // 
-            this.DateReturn.HeaderText = "Return Date";
-            this.DateReturn.Name = "DateReturn";
-            this.DateReturn.ReadOnly = true;
             // 
             // AllMembers_listbox
             // 
@@ -713,6 +678,49 @@
             this.ReturnBook_Btn.UseVisualStyleBackColor = true;
             this.ReturnBook_Btn.Click += new System.EventHandler(this.ReturnBook_Btn_Click);
             // 
+            // IDLoan
+            // 
+            this.IDLoan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.IDLoan.HeaderText = "ID";
+            this.IDLoan.Name = "IDLoan";
+            this.IDLoan.ReadOnly = true;
+            // 
+            // TitleLoan
+            // 
+            this.TitleLoan.HeaderText = "Title";
+            this.TitleLoan.Name = "TitleLoan";
+            this.TitleLoan.ReadOnly = true;
+            // 
+            // AuthorLoan
+            // 
+            this.AuthorLoan.HeaderText = "Author";
+            this.AuthorLoan.Name = "AuthorLoan";
+            this.AuthorLoan.ReadOnly = true;
+            // 
+            // LoanTime
+            // 
+            this.LoanTime.HeaderText = "TimeOfLoan";
+            this.LoanTime.Name = "LoanTime";
+            this.LoanTime.ReadOnly = true;
+            // 
+            // DateDue
+            // 
+            this.DateDue.HeaderText = "Due Date";
+            this.DateDue.Name = "DateDue";
+            this.DateDue.ReadOnly = true;
+            // 
+            // DateReturn
+            // 
+            this.DateReturn.HeaderText = "Return Date";
+            this.DateReturn.Name = "DateReturn";
+            this.DateReturn.ReadOnly = true;
+            // 
+            // FineLoan
+            // 
+            this.FineLoan.HeaderText = "Fine";
+            this.FineLoan.Name = "FineLoan";
+            this.FineLoan.ReadOnly = true;
+            // 
             // LibraryForm
             // 
             this.ClientSize = new System.Drawing.Size(1330, 639);
@@ -786,13 +794,14 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView LoanGrid;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button ReturnBook_Btn;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDLoan;
         private System.Windows.Forms.DataGridViewTextBoxColumn TitleLoan;
         private System.Windows.Forms.DataGridViewTextBoxColumn AuthorLoan;
         private System.Windows.Forms.DataGridViewTextBoxColumn LoanTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateDue;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateReturn;
-        private System.Windows.Forms.Button ReturnBook_Btn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FineLoan;
     }
 }
     

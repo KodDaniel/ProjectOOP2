@@ -35,12 +35,17 @@ namespace Library.Services
 
         public void LoanBook(BookCopy bookCopy, Member member)
         {
+            // Uppgiftsspecifik logik för att ett lån ska vara försenat
+
             var dateOfLoan = DateTime.Now;
 
-            if (member.Loans.Count >= 1)
+            if (member.Loans is null)
             {
-                dateOfLoan = DateTime.Now.AddMonths(-1);
-
+                dateOfLoan = DateTime.Now;               
+            }            
+            else if (member.Loans.Count >= 1)
+            {
+                dateOfLoan = DateTime.Now.AddMonths(-1);              
             }
 
             var loan = new Loan()
@@ -58,12 +63,14 @@ namespace Library.Services
 
         public void ReturnLoan(Loan loan, DateTime timeOfReturn)
         {
-
             loan.TimeOfReturn = timeOfReturn;
-            loanRepository.Edit(loan);
 
-            //Check if member has collected any fines by returning the book late
-            //loan.Member.UnpaidFine += GetFineByLoan(loan);
+            if (timeOfReturn > loan.DueDate)
+            {
+                loan.Fine = "50 kronor";
+            }
+            loanRepository.Edit(loan);
+         
             if (Updated != null)
             {
                 Updated(this, EventArgs.Empty);

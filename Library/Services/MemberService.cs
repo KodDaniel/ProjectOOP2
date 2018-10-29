@@ -27,12 +27,20 @@ namespace Library.Services
 
         public void AddMember(Member member)
         {
-            memberRepository.Add(member);
+            memberRepository.Add(member);          
+            if (Updated != null)
+            {
+                Updated(this, EventArgs.Empty);
+            }
         }
 
         public void RemoveMember(Member member)
         {
             memberRepository.Remove(member);
+            if (Updated != null)
+            {
+                Updated(this, EventArgs.Empty);
+            }
         }
 
         public Member FindMember(int key)
