@@ -285,7 +285,7 @@ namespace Library
 
             if (CheckInput(name))
             {
-                Author author = new Author { Name = name };
+                var author = new Author { Name = name };
                 _authorService.AddAuthor(author);
                 AddAuthorName_textbox.Clear();
             }
@@ -393,8 +393,8 @@ namespace Library
                 LoanBook_Btn.Enabled = false;
             }
         }
-        //--------------------------------------------------------------------------------------------------
-
+      
+        //Nedan: Metoder utan kod
         private void tabPage1_Click(object sender, EventArgs e)
         {
 

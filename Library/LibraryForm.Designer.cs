@@ -64,12 +64,20 @@
             this.AddBookNumberOfCopies_drop = new System.Windows.Forms.NumericUpDown();
             this.MemberAndLoanTab = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.ReturnBook_Btn = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.LoanGrid = new System.Windows.Forms.DataGridView();
+            this.IDLoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TitleLoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AuthorLoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LoanTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateDue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateReturn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FineLoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AllMembers_listbox = new System.Windows.Forms.ListBox();
             this.DeleteMember_Btn = new System.Windows.Forms.Button();
             this.AddMember_Btn = new System.Windows.Forms.Button();
@@ -85,14 +93,6 @@
             this.LoanAuthor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LoanTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LoanId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReturnBook_Btn = new System.Windows.Forms.Button();
-            this.IDLoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TitleLoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AuthorLoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LoanTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateDue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateReturn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FineLoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BookGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddBookNumberOfCopies_drop)).BeginInit();
@@ -141,18 +141,18 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(1128, 31);
+            this.label12.Location = new System.Drawing.Point(1028, 21);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(84, 13);
+            this.label12.Size = new System.Drawing.Size(78, 13);
             this.label12.TabIndex = 419;
-            this.label12.Text = " Select Member ";
+            this.label12.Text = "Select Member";
             // 
             // Member_ComboBox
             // 
             this.Member_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Member_ComboBox.Location = new System.Drawing.Point(1131, 53);
+            this.Member_ComboBox.Location = new System.Drawing.Point(1031, 37);
             this.Member_ComboBox.Name = "Member_ComboBox";
-            this.Member_ComboBox.Size = new System.Drawing.Size(121, 21);
+            this.Member_ComboBox.Size = new System.Drawing.Size(164, 21);
             this.Member_ComboBox.TabIndex = 418;
             this.Member_ComboBox.SelectedIndexChanged += new System.EventHandler(this.Member_ComboBox_SelectedIndexChanged);
             // 
@@ -481,6 +481,16 @@
             this.tabPage2.Text = "Member and Loans";
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click_1);
             // 
+            // ReturnBook_Btn
+            // 
+            this.ReturnBook_Btn.Location = new System.Drawing.Point(674, 550);
+            this.ReturnBook_Btn.Name = "ReturnBook_Btn";
+            this.ReturnBook_Btn.Size = new System.Drawing.Size(250, 25);
+            this.ReturnBook_Btn.TabIndex = 442;
+            this.ReturnBook_Btn.Text = "Return Book";
+            this.ReturnBook_Btn.UseVisualStyleBackColor = true;
+            this.ReturnBook_Btn.Click += new System.EventHandler(this.ReturnBook_Btn_Click);
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -554,6 +564,49 @@
             this.LoanGrid.Size = new System.Drawing.Size(904, 451);
             this.LoanGrid.TabIndex = 436;
             this.LoanGrid.TabStop = false;
+            // 
+            // IDLoan
+            // 
+            this.IDLoan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.IDLoan.HeaderText = "ID";
+            this.IDLoan.Name = "IDLoan";
+            this.IDLoan.ReadOnly = true;
+            // 
+            // TitleLoan
+            // 
+            this.TitleLoan.HeaderText = "Title";
+            this.TitleLoan.Name = "TitleLoan";
+            this.TitleLoan.ReadOnly = true;
+            // 
+            // AuthorLoan
+            // 
+            this.AuthorLoan.HeaderText = "Author";
+            this.AuthorLoan.Name = "AuthorLoan";
+            this.AuthorLoan.ReadOnly = true;
+            // 
+            // LoanTime
+            // 
+            this.LoanTime.HeaderText = "TimeOfLoan";
+            this.LoanTime.Name = "LoanTime";
+            this.LoanTime.ReadOnly = true;
+            // 
+            // DateDue
+            // 
+            this.DateDue.HeaderText = "Due Date";
+            this.DateDue.Name = "DateDue";
+            this.DateDue.ReadOnly = true;
+            // 
+            // DateReturn
+            // 
+            this.DateReturn.HeaderText = "Return Date";
+            this.DateReturn.Name = "DateReturn";
+            this.DateReturn.ReadOnly = true;
+            // 
+            // FineLoan
+            // 
+            this.FineLoan.HeaderText = "Fine";
+            this.FineLoan.Name = "FineLoan";
+            this.FineLoan.ReadOnly = true;
             // 
             // AllMembers_listbox
             // 
@@ -667,59 +720,6 @@
             this.LoanId.HeaderText = "ID";
             this.LoanId.Name = "LoanId";
             this.LoanId.ReadOnly = true;
-            // 
-            // ReturnBook_Btn
-            // 
-            this.ReturnBook_Btn.Location = new System.Drawing.Point(674, 550);
-            this.ReturnBook_Btn.Name = "ReturnBook_Btn";
-            this.ReturnBook_Btn.Size = new System.Drawing.Size(250, 25);
-            this.ReturnBook_Btn.TabIndex = 442;
-            this.ReturnBook_Btn.Text = "Return Book";
-            this.ReturnBook_Btn.UseVisualStyleBackColor = true;
-            this.ReturnBook_Btn.Click += new System.EventHandler(this.ReturnBook_Btn_Click);
-            // 
-            // IDLoan
-            // 
-            this.IDLoan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.IDLoan.HeaderText = "ID";
-            this.IDLoan.Name = "IDLoan";
-            this.IDLoan.ReadOnly = true;
-            // 
-            // TitleLoan
-            // 
-            this.TitleLoan.HeaderText = "Title";
-            this.TitleLoan.Name = "TitleLoan";
-            this.TitleLoan.ReadOnly = true;
-            // 
-            // AuthorLoan
-            // 
-            this.AuthorLoan.HeaderText = "Author";
-            this.AuthorLoan.Name = "AuthorLoan";
-            this.AuthorLoan.ReadOnly = true;
-            // 
-            // LoanTime
-            // 
-            this.LoanTime.HeaderText = "TimeOfLoan";
-            this.LoanTime.Name = "LoanTime";
-            this.LoanTime.ReadOnly = true;
-            // 
-            // DateDue
-            // 
-            this.DateDue.HeaderText = "Due Date";
-            this.DateDue.Name = "DateDue";
-            this.DateDue.ReadOnly = true;
-            // 
-            // DateReturn
-            // 
-            this.DateReturn.HeaderText = "Return Date";
-            this.DateReturn.Name = "DateReturn";
-            this.DateReturn.ReadOnly = true;
-            // 
-            // FineLoan
-            // 
-            this.FineLoan.HeaderText = "Fine";
-            this.FineLoan.Name = "FineLoan";
-            this.FineLoan.ReadOnly = true;
             // 
             // LibraryForm
             // 
