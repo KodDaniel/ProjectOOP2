@@ -57,18 +57,24 @@ namespace Library
                 int id = (int)BookGrid.SelectedRows[0].Cells["Id"].Value;
                 return _bookService.FindBook(id);
             }
+            else
+            {
+                return null;
 
-            return null;
-
+            }
         }
         Loan GetSelectedLoan()
         {
-            if (LoanGrid.SelectedRows[0].Cells["LoanId"] != null)
+            if (LoanGrid.SelectedRows[0].Cells["IDLoan"] != null)
             {
-                int id = (int)LoanGrid.SelectedRows[0].Cells["LoanId"].Value;
+                int id = (int)LoanGrid.SelectedRows[0].Cells["IDLoan"].Value;
                 return _loanService.FindLoan(id);
             }
-            return null;
+            else
+            {
+                return null;
+
+            }
 
         }
 
@@ -109,7 +115,8 @@ namespace Library
                LoanGrid["TitleLoan", index].Value = loan.BookCopy.Book.Title;
                LoanGrid["AuthorLoan", index].Value = loan.BookCopy.Book.Author.Name;
                LoanGrid["LoanTime", index].Value = loan.TimeOfLoan;
-                LoanGrid["DateDue", index].Value = loan.DueDate;
+               LoanGrid["DateDue", index].Value = loan.DueDate;
+               LoanGrid["DateReturn", index].Value = loan.TimeOfReturn;
 
                 index++;
             }
@@ -183,10 +190,10 @@ namespace Library
         {
             var loan = GetSelectedLoan();
 
-            if (loan.TimeOfReturn == null)
-            {
-               
-            }
+            var timeOfReturn = DateTime.Now;
+
+            _loanService.ReturnLoan(loan, timeOfReturn);
+
         }
 
         private void SearchBookByAuthor_Btn_Click(object sender, EventArgs e)
