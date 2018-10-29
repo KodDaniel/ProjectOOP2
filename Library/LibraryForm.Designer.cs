@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label12 = new System.Windows.Forms.Label();
+            this.Member_ComboBox = new System.Windows.Forms.ComboBox();
+            this.ListAllBooks_btn = new System.Windows.Forms.Button();
             this.SaveBook_Btn = new System.Windows.Forms.Button();
             this.DeleteBook_btn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -60,37 +63,35 @@
             this.AddBookAuthor_ComboBox = new System.Windows.Forms.ComboBox();
             this.AddBookNumberOfCopies_drop = new System.Windows.Forms.NumericUpDown();
             this.MemberAndLoanTab = new System.Windows.Forms.TabControl();
-            this.ListAllBooks_btn = new System.Windows.Forms.Button();
-            this.Member_ComboBox = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.ReturnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TimeOfLoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LoanAuthor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LoanTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LoanId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.Member_Id_textbox = new System.Windows.Forms.TextBox();
-            this.Member_Name_textbox = new System.Windows.Forms.TextBox();
-            this.AddMember_Btn = new System.Windows.Forms.Button();
-            this.DeleteMember_Btn = new System.Windows.Forms.Button();
-            this.AllMembers_listbox = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.LoanGrid = new System.Windows.Forms.DataGridView();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.LoanGrid = new System.Windows.Forms.DataGridView();
             this.IDLoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TitleLoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AuthorLoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LoanTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateDue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateReturn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AllMembers_listbox = new System.Windows.Forms.ListBox();
+            this.DeleteMember_Btn = new System.Windows.Forms.Button();
+            this.AddMember_Btn = new System.Windows.Forms.Button();
+            this.Member_Name_textbox = new System.Windows.Forms.TextBox();
+            this.Member_Id_textbox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.ReturnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimeOfLoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LoanAuthor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LoanTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LoanId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReturnBook_Btn = new System.Windows.Forms.Button();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BookGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddBookNumberOfCopies_drop)).BeginInit();
@@ -135,6 +136,34 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Books";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click_1);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(1128, 31);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(84, 13);
+            this.label12.TabIndex = 419;
+            this.label12.Text = " Select Member ";
+            // 
+            // Member_ComboBox
+            // 
+            this.Member_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Member_ComboBox.Location = new System.Drawing.Point(1131, 53);
+            this.Member_ComboBox.Name = "Member_ComboBox";
+            this.Member_ComboBox.Size = new System.Drawing.Size(121, 21);
+            this.Member_ComboBox.TabIndex = 418;
+            this.Member_ComboBox.SelectedIndexChanged += new System.EventHandler(this.Member_ComboBox_SelectedIndexChanged);
+            // 
+            // ListAllBooks_btn
+            // 
+            this.ListAllBooks_btn.Location = new System.Drawing.Point(874, 529);
+            this.ListAllBooks_btn.Name = "ListAllBooks_btn";
+            this.ListAllBooks_btn.Size = new System.Drawing.Size(250, 25);
+            this.ListAllBooks_btn.TabIndex = 46;
+            this.ListAllBooks_btn.Text = "List all books";
+            this.ListAllBooks_btn.UseVisualStyleBackColor = true;
+            this.ListAllBooks_btn.Click += new System.EventHandler(this.ListAllBooks_btn_Click);
             // 
             // SaveBook_Btn
             // 
@@ -424,33 +453,218 @@
             this.MemberAndLoanTab.Size = new System.Drawing.Size(1334, 625);
             this.MemberAndLoanTab.TabIndex = 0;
             // 
-            // ListAllBooks_btn
+            // tabPage2
             // 
-            this.ListAllBooks_btn.Location = new System.Drawing.Point(874, 529);
-            this.ListAllBooks_btn.Name = "ListAllBooks_btn";
-            this.ListAllBooks_btn.Size = new System.Drawing.Size(250, 25);
-            this.ListAllBooks_btn.TabIndex = 46;
-            this.ListAllBooks_btn.Text = "List all books";
-            this.ListAllBooks_btn.UseVisualStyleBackColor = true;
-            this.ListAllBooks_btn.Click += new System.EventHandler(this.ListAllBooks_btn_Click);
+            this.tabPage2.BackColor = System.Drawing.Color.DarkGray;
+            this.tabPage2.Controls.Add(this.ReturnBook_Btn);
+            this.tabPage2.Controls.Add(this.label10);
+            this.tabPage2.Controls.Add(this.label9);
+            this.tabPage2.Controls.Add(this.label8);
+            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Controls.Add(this.label6);
+            this.tabPage2.Controls.Add(this.LoanGrid);
+            this.tabPage2.Controls.Add(this.AllMembers_listbox);
+            this.tabPage2.Controls.Add(this.DeleteMember_Btn);
+            this.tabPage2.Controls.Add(this.AddMember_Btn);
+            this.tabPage2.Controls.Add(this.Member_Name_textbox);
+            this.tabPage2.Controls.Add(this.Member_Id_textbox);
+            this.tabPage2.Controls.Add(this.label2);
+            this.tabPage2.Controls.Add(this.label3);
+            this.tabPage2.Controls.Add(this.label4);
+            this.tabPage2.Controls.Add(this.label5);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1326, 599);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Member and Loans";
+            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click_1);
             // 
-            // Member_ComboBox
+            // label10
             // 
-            this.Member_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Member_ComboBox.Location = new System.Drawing.Point(1131, 53);
-            this.Member_ComboBox.Name = "Member_ComboBox";
-            this.Member_ComboBox.Size = new System.Drawing.Size(121, 21);
-            this.Member_ComboBox.TabIndex = 418;
-            this.Member_ComboBox.SelectedIndexChanged += new System.EventHandler(this.Member_ComboBox_SelectedIndexChanged);
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial Black", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(989, 213);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(125, 24);
+            this.label10.TabIndex = 441;
+            this.label10.Text = "All Members";
             // 
-            // label12
+            // label9
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(1128, 31);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(84, 13);
-            this.label12.TabIndex = 419;
-            this.label12.Text = " Select Member ";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(990, 94);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(35, 13);
+            this.label9.TabIndex = 440;
+            this.label9.Text = "Name";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(993, 137);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(62, 13);
+            this.label8.TabIndex = 439;
+            this.label8.Text = "Personal ID";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial Black", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(999, 48);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(227, 24);
+            this.label7.TabIndex = 438;
+            this.label7.Text = "Member Administration";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial Black", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(26, 48);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(197, 24);
+            this.label6.TabIndex = 437;
+            this.label6.Text = "Loan Administration";
+            // 
+            // LoanGrid
+            // 
+            this.LoanGrid.AllowUserToAddRows = false;
+            this.LoanGrid.AllowUserToDeleteRows = false;
+            this.LoanGrid.AllowUserToResizeRows = false;
+            this.LoanGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.LoanGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.LoanGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.LoanGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDLoan,
+            this.TitleLoan,
+            this.AuthorLoan,
+            this.LoanTime,
+            this.DateDue,
+            this.DateReturn});
+            this.LoanGrid.Location = new System.Drawing.Point(20, 84);
+            this.LoanGrid.MultiSelect = false;
+            this.LoanGrid.Name = "LoanGrid";
+            this.LoanGrid.ReadOnly = true;
+            this.LoanGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.LoanGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.LoanGrid.Size = new System.Drawing.Size(904, 451);
+            this.LoanGrid.TabIndex = 436;
+            this.LoanGrid.TabStop = false;
+            // 
+            // IDLoan
+            // 
+            this.IDLoan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.IDLoan.HeaderText = "ID";
+            this.IDLoan.Name = "IDLoan";
+            this.IDLoan.ReadOnly = true;
+            // 
+            // TitleLoan
+            // 
+            this.TitleLoan.HeaderText = "Title";
+            this.TitleLoan.Name = "TitleLoan";
+            this.TitleLoan.ReadOnly = true;
+            // 
+            // AuthorLoan
+            // 
+            this.AuthorLoan.HeaderText = "Author";
+            this.AuthorLoan.Name = "AuthorLoan";
+            this.AuthorLoan.ReadOnly = true;
+            // 
+            // LoanTime
+            // 
+            this.LoanTime.HeaderText = "TimeOfLoan";
+            this.LoanTime.Name = "LoanTime";
+            this.LoanTime.ReadOnly = true;
+            // 
+            // DateDue
+            // 
+            this.DateDue.HeaderText = "Due Date";
+            this.DateDue.Name = "DateDue";
+            this.DateDue.ReadOnly = true;
+            // 
+            // DateReturn
+            // 
+            this.DateReturn.HeaderText = "Return Date";
+            this.DateReturn.Name = "DateReturn";
+            this.DateReturn.ReadOnly = true;
+            // 
+            // AllMembers_listbox
+            // 
+            this.AllMembers_listbox.FormattingEnabled = true;
+            this.AllMembers_listbox.Location = new System.Drawing.Point(990, 240);
+            this.AllMembers_listbox.Name = "AllMembers_listbox";
+            this.AllMembers_listbox.Size = new System.Drawing.Size(253, 277);
+            this.AllMembers_listbox.TabIndex = 434;
+            // 
+            // DeleteMember_Btn
+            // 
+            this.DeleteMember_Btn.Location = new System.Drawing.Point(990, 539);
+            this.DeleteMember_Btn.Name = "DeleteMember_Btn";
+            this.DeleteMember_Btn.Size = new System.Drawing.Size(250, 25);
+            this.DeleteMember_Btn.TabIndex = 433;
+            this.DeleteMember_Btn.Text = "Delete Member";
+            this.DeleteMember_Btn.UseVisualStyleBackColor = true;
+            this.DeleteMember_Btn.Click += new System.EventHandler(this.DeleteMember_Btn_Click);
+            // 
+            // AddMember_Btn
+            // 
+            this.AddMember_Btn.Location = new System.Drawing.Point(993, 179);
+            this.AddMember_Btn.Name = "AddMember_Btn";
+            this.AddMember_Btn.Size = new System.Drawing.Size(250, 25);
+            this.AddMember_Btn.TabIndex = 432;
+            this.AddMember_Btn.Text = "Add member";
+            this.AddMember_Btn.UseVisualStyleBackColor = true;
+            this.AddMember_Btn.Click += new System.EventHandler(this.AddMember_Btn_Click);
+            // 
+            // Member_Name_textbox
+            // 
+            this.Member_Name_textbox.Location = new System.Drawing.Point(993, 110);
+            this.Member_Name_textbox.Name = "Member_Name_textbox";
+            this.Member_Name_textbox.Size = new System.Drawing.Size(253, 20);
+            this.Member_Name_textbox.TabIndex = 430;
+            // 
+            // Member_Id_textbox
+            // 
+            this.Member_Id_textbox.Location = new System.Drawing.Point(993, 153);
+            this.Member_Id_textbox.Name = "Member_Id_textbox";
+            this.Member_Id_textbox.Size = new System.Drawing.Size(253, 20);
+            this.Member_Id_textbox.TabIndex = 427;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(993, 68);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 13);
+            this.label2.TabIndex = 431;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial Black", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(989, 31);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 24);
+            this.label3.TabIndex = 429;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(993, 117);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 13);
+            this.label4.TabIndex = 428;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial Black", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(36, 48);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(0, 24);
+            this.label5.TabIndex = 40;
             // 
             // ReturnDate
             // 
@@ -489,217 +703,15 @@
             this.LoanId.Name = "LoanId";
             this.LoanId.ReadOnly = true;
             // 
-            // label5
+            // ReturnBook_Btn
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial Black", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(36, 48);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(0, 24);
-            this.label5.TabIndex = 40;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(993, 117);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(0, 13);
-            this.label4.TabIndex = 428;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial Black", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(989, 31);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 24);
-            this.label3.TabIndex = 429;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(993, 68);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 13);
-            this.label2.TabIndex = 431;
-            // 
-            // Member_Id_textbox
-            // 
-            this.Member_Id_textbox.Location = new System.Drawing.Point(993, 153);
-            this.Member_Id_textbox.Name = "Member_Id_textbox";
-            this.Member_Id_textbox.Size = new System.Drawing.Size(253, 20);
-            this.Member_Id_textbox.TabIndex = 427;
-            // 
-            // Member_Name_textbox
-            // 
-            this.Member_Name_textbox.Location = new System.Drawing.Point(993, 110);
-            this.Member_Name_textbox.Name = "Member_Name_textbox";
-            this.Member_Name_textbox.Size = new System.Drawing.Size(253, 20);
-            this.Member_Name_textbox.TabIndex = 430;
-            // 
-            // AddMember_Btn
-            // 
-            this.AddMember_Btn.Location = new System.Drawing.Point(993, 179);
-            this.AddMember_Btn.Name = "AddMember_Btn";
-            this.AddMember_Btn.Size = new System.Drawing.Size(250, 25);
-            this.AddMember_Btn.TabIndex = 432;
-            this.AddMember_Btn.Text = "Add member";
-            this.AddMember_Btn.UseVisualStyleBackColor = true;
-            this.AddMember_Btn.Click += new System.EventHandler(this.AddMember_Btn_Click);
-            // 
-            // DeleteMember_Btn
-            // 
-            this.DeleteMember_Btn.Location = new System.Drawing.Point(990, 539);
-            this.DeleteMember_Btn.Name = "DeleteMember_Btn";
-            this.DeleteMember_Btn.Size = new System.Drawing.Size(250, 25);
-            this.DeleteMember_Btn.TabIndex = 433;
-            this.DeleteMember_Btn.Text = "Delete Member";
-            this.DeleteMember_Btn.UseVisualStyleBackColor = true;
-            this.DeleteMember_Btn.Click += new System.EventHandler(this.DeleteMember_Btn_Click);
-            // 
-            // AllMembers_listbox
-            // 
-            this.AllMembers_listbox.FormattingEnabled = true;
-            this.AllMembers_listbox.Location = new System.Drawing.Point(990, 240);
-            this.AllMembers_listbox.Name = "AllMembers_listbox";
-            this.AllMembers_listbox.Size = new System.Drawing.Size(253, 277);
-            this.AllMembers_listbox.TabIndex = 434;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.Color.DarkGray;
-            this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Controls.Add(this.label6);
-            this.tabPage2.Controls.Add(this.LoanGrid);
-            this.tabPage2.Controls.Add(this.AllMembers_listbox);
-            this.tabPage2.Controls.Add(this.DeleteMember_Btn);
-            this.tabPage2.Controls.Add(this.AddMember_Btn);
-            this.tabPage2.Controls.Add(this.Member_Name_textbox);
-            this.tabPage2.Controls.Add(this.Member_Id_textbox);
-            this.tabPage2.Controls.Add(this.label2);
-            this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Controls.Add(this.label4);
-            this.tabPage2.Controls.Add(this.label5);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1326, 599);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Member and Loans";
-            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click_1);
-            // 
-            // LoanGrid
-            // 
-            this.LoanGrid.AllowUserToAddRows = false;
-            this.LoanGrid.AllowUserToDeleteRows = false;
-            this.LoanGrid.AllowUserToResizeRows = false;
-            this.LoanGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.LoanGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.LoanGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.LoanGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IDLoan,
-            this.TitleLoan,
-            this.AuthorLoan,
-            this.LoanTime,
-            this.DateDue,
-            this.DateReturn});
-            this.LoanGrid.Location = new System.Drawing.Point(20, 84);
-            this.LoanGrid.MultiSelect = false;
-            this.LoanGrid.Name = "LoanGrid";
-            this.LoanGrid.ReadOnly = true;
-            this.LoanGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.LoanGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.LoanGrid.Size = new System.Drawing.Size(904, 451);
-            this.LoanGrid.TabIndex = 436;
-            this.LoanGrid.TabStop = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial Black", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(26, 48);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(197, 24);
-            this.label6.TabIndex = 437;
-            this.label6.Text = "Loan Administration";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial Black", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(999, 48);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(227, 24);
-            this.label7.TabIndex = 438;
-            this.label7.Text = "Member Administration";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(993, 137);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(62, 13);
-            this.label8.TabIndex = 439;
-            this.label8.Text = "Personal ID";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(990, 94);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(35, 13);
-            this.label9.TabIndex = 440;
-            this.label9.Text = "Name";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Arial Black", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(989, 213);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(125, 24);
-            this.label10.TabIndex = 441;
-            this.label10.Text = "All Members";
-            // 
-            // IDLoan
-            // 
-            this.IDLoan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.IDLoan.HeaderText = "ID";
-            this.IDLoan.Name = "IDLoan";
-            this.IDLoan.ReadOnly = true;
-            // 
-            // TitleLoan
-            // 
-            this.TitleLoan.HeaderText = "Title";
-            this.TitleLoan.Name = "TitleLoan";
-            this.TitleLoan.ReadOnly = true;
-            // 
-            // AuthorLoan
-            // 
-            this.AuthorLoan.HeaderText = "Author";
-            this.AuthorLoan.Name = "AuthorLoan";
-            this.AuthorLoan.ReadOnly = true;
-            // 
-            // LoanTime
-            // 
-            this.LoanTime.HeaderText = "TimeOfLoan";
-            this.LoanTime.Name = "LoanTime";
-            this.LoanTime.ReadOnly = true;
-            // 
-            // DateDue
-            // 
-            this.DateDue.HeaderText = "Due Date";
-            this.DateDue.Name = "DateDue";
-            this.DateDue.ReadOnly = true;
-            // 
-            // DateReturn
-            // 
-            this.DateReturn.HeaderText = "Return Date";
-            this.DateReturn.Name = "DateReturn";
-            this.DateReturn.ReadOnly = true;
+            this.ReturnBook_Btn.Location = new System.Drawing.Point(674, 550);
+            this.ReturnBook_Btn.Name = "ReturnBook_Btn";
+            this.ReturnBook_Btn.Size = new System.Drawing.Size(250, 25);
+            this.ReturnBook_Btn.TabIndex = 442;
+            this.ReturnBook_Btn.Text = "Return Book";
+            this.ReturnBook_Btn.UseVisualStyleBackColor = true;
+            this.ReturnBook_Btn.Click += new System.EventHandler(this.ReturnBook_Btn_Click);
             // 
             // LibraryForm
             // 
@@ -780,6 +792,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LoanTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateDue;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateReturn;
+        private System.Windows.Forms.Button ReturnBook_Btn;
     }
 }
     

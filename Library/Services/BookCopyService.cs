@@ -36,6 +36,11 @@ namespace Library.Services
         public void AddBookCopy(BookCopy bookCopy)
         {
             bookCopyRepository.Add(bookCopy);
+            if (Updated != null)
+            {
+                Updated(this, EventArgs.Empty);
+
+            }
         }
 
         public void RemoveBookCopy(BookCopy bookCopy)
@@ -47,5 +52,7 @@ namespace Library.Services
         {
             return bookCopyRepository.Find(key);
         }
+
+
     }
 }

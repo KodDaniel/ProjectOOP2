@@ -35,12 +35,12 @@ namespace Library.Services
 
         public void LoanBook(BookCopy bookCopy, Member member)
         {
-            DateTime today = DateTime.Today;
+            var dateOfLoan = DateTime.Now.AddMonths(-1);
 
             Loan loan = new Loan()
             {
-                TimeOfLoan = today,
-                DueDate = today.AddDays(14),
+                TimeOfLoan = dateOfLoan,
+                DueDate = dateOfLoan.AddDays(14),
                 BookCopy = bookCopy,
                 Member = member,
             };
@@ -48,6 +48,22 @@ namespace Library.Services
            AddLoan(loan);
            ConnectMemberAndLoan(loan, member);
 
+        }
+
+        public void ReturnLoan(Loan loan, DateTime timeOfReturn)
+        {
+            //var newLoan = loan;
+
+            loan.TimeOfReturn = timeOfReturn;
+            loanRepository.Edit(loan);
+
+            //Check if member has collected any fines by returning the book late
+            //loan.Member.UnpaidFine += GetFineByLoan(loan);
+            if (Updated != null)
+            {
+                Updated(this, EventArgs.Empty);
+
+            }
         }
 
         public void ConnectMemberAndLoan(Loan loan, Member member)
