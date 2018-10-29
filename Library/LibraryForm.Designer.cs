@@ -251,6 +251,7 @@
             this.BookGrid.TabIndex = 38;
             this.BookGrid.TabStop = false;
             this.BookGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewAll_CellClick);
+            this.BookGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BookGrid_CellContentClick);
             // 
             // Title
             // 

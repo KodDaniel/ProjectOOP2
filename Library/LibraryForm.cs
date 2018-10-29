@@ -32,7 +32,7 @@ namespace Library
             _memberService = new MemberService(repoFactory);
             _loanService = new LoanService(repoFactory);
 
-            // Fyller Combos vid start
+            // Fills Combos from start
             FillComboBoxes();
 
             // Event subsciptions
@@ -40,16 +40,17 @@ namespace Library
             _authorService.Updated += OnUpdateFillComboBoxes;
             _loanService.Updated += OnUpdateFillComboBoxes;
             _memberService.Updated += OnUpdateFillComboBoxes;
-
-            // Notera att detta är det som gör kopior synliga när du addar bok
             _bookCopyService.Updated += OnUpdateFillComboBoxes;
             
-            // Ska ej gå att låna utan att välja medlem
+            // You need to choose a member to make a loan
             LoanBook_Btn.Enabled = false;
         }
-    
 
-        private Book GetSelectedBook()
+        /// <summary>
+        /// Returns a specific book
+        /// </summary>
+        /// <returns></returns> 
+        private Book GetThisBook()
         {
             if (BookGrid.SelectedRows[0].Cells["Id"] != null)
             {
@@ -61,7 +62,11 @@ namespace Library
                 return null;
             }
         }
-        Loan GetSelectedLoan()
+        /// <summary>
+        /// Returns a specific loan
+        /// </summary>
+        /// <returns></returns>
+        Loan GetThisLoan()
         {
             if (LoanGrid.SelectedRows[0].Cells["IDLoan"] != null)
             {
@@ -72,9 +77,12 @@ namespace Library
             {
                 return null;
             }
-
         }
 
+        /// <summary>
+        /// Print out all books from IEnumerable to the main data view
+        /// </summary>
+        /// <param name="books"></param>
         void ShowAllBooks(IEnumerable<Book> books)
         {
             BookGrid.Rows.Clear();
@@ -97,7 +105,10 @@ namespace Library
                 index++;
             }
         }
-
+        /// <summary>
+        /// Print out all loans from IEnumerable to the loans data view
+        /// </summary>
+        /// <param name="loans"></param>
         void ShowAllLoans(IEnumerable<Loan> loans)
         {
             LoanGrid.Rows.Clear();
@@ -114,7 +125,7 @@ namespace Library
                LoanGrid["DateDue", index].Value = loan.DueDate;
                LoanGrid["DateReturn", index].Value = loan.TimeOfReturn;
 
-                // FUNKAR EJ
+                // Fine if it exists from LoanSerivce
                 if (!string.IsNullOrWhiteSpace(loan.Fine))
                 {
                     LoanGrid["FineLoan", index].Value = loan.Fine;
@@ -124,9 +135,10 @@ namespace Library
             }
         }
 
+        //From Grid to relevant input boxes
         private void GridViewAll_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var book = GetSelectedBook();
+            var book = GetThisBook();
             
             AddBookISBN_textbox.Text = book.Isbn;
             AddBookTitle_TextBox.Text = book.Title;
@@ -135,6 +147,9 @@ namespace Library
             AddBookNumberOfCopies_drop.Value =  book.BookCopies;
         }
 
+        /// <summary>
+        /// Filling Como Boxes (on change)
+        /// </summary>
         private void FillComboBoxes()
         {
             ShowAllBooks(_bookService.All());
@@ -187,7 +202,7 @@ namespace Library
         }
         private void ReturnBook_Btn_Click(object sender, EventArgs e)
         {
-            var loan = GetSelectedLoan();
+            var loan = GetThisLoan();
 
             var timeOfReturn = DateTime.Now;
 
@@ -207,8 +222,11 @@ namespace Library
         {
             FillComboBoxes();
         }
+
+
         private void SaveBook_Btn_Click(object sender, EventArgs e)
         {
+            // validerar
              List<string> validationList = new List<string>
              {
                 AddBookISBN_textbox.Text,
@@ -225,7 +243,7 @@ namespace Library
 
             if (CheckInput(validationList) && AddBookAuthor_ComboBox.SelectedItem != null)
             {
-                Book book = new Book()
+                var book = new Book()
                 {
                     Id = id,
                     Isbn = newIsbn,
@@ -293,6 +311,7 @@ namespace Library
 
         private void DeleteBook_btn_Click(object sender, EventArgs e)
         {
+
             var id = (int)BookGrid.SelectedRows[0].Cells["Id"].Value;
             var book = _bookService.FindBook(id);
             _bookService.RemoveBook(book);
@@ -335,9 +354,14 @@ namespace Library
         void OnUpdateFillComboBoxes(object source, EventArgs args)
         {
             FillComboBoxes();
-        } 
+        }
 
         #region Validation
+        /// <summary>
+        /// Checks that the provided string-LIST is not null or empty
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         bool CheckInput(List<string> input)
         {
             foreach (string text in input)
@@ -352,6 +376,11 @@ namespace Library
         }
 
         // Overlodar CheckInput
+        /// <summary>
+        /// Checks that the provided string is not null or empty
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         bool CheckInput(string input)
         {
             var list = new List<string>()
@@ -365,6 +394,10 @@ namespace Library
 
         #region ClearInput
 
+        /// <summary>
+        /// Clears input for Book Adminstration
+        /// </summary>
+        /// <returns></returns>
         private void ClearBookAdministration()
         {
             AddBookISBN_textbox.Clear();
@@ -374,6 +407,10 @@ namespace Library
             AddBookNumberOfCopies_drop.Text = "";
         }
 
+        /// <summary>
+        /// Clear input for member administration
+        /// </summary>
+        /// <returns></returns>
         private void ClearMemberInput()
         {
             Member_Id_textbox.Text = "";
@@ -491,6 +528,12 @@ namespace Library
         private void tabPage2_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void BookGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            
         }
     }
 }
